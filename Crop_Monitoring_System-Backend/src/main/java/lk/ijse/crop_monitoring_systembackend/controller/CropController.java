@@ -146,7 +146,7 @@ public class CropController {
             try {
                 boolean deleted = cropService.deleteCrop(id);
                 if (deleted){
-                    logger.info("Crop deleted successfully with id: " + id);
+                    logger.info("Crop deleted Successfully with id: " + id);
                     return new ResponseEntity<>(HttpStatus.NO_CONTENT);
                 } else {
                     return new ResponseEntity<>(HttpStatus.BAD_REQUEST);
