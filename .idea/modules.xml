@@ -3,6 +3,7 @@
   <component name="ProjectModuleManager">
     <modules>
       <module fileurl="file://$PROJECT_DIR$/.idea/Crop_Monitoring_System-Backend-ChamiShavishka.iml" filepath="$PROJECT_DIR$/.idea/Crop_Monitoring_System-Backend-ChamiShavishka.iml" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/Crop_Monitoring_System-Backend.main.iml" filepath="$PROJECT_DIR$/.idea/modules/Crop_Monitoring_System-Backend.main.iml" />
     </modules>
   </component>
 </project>
