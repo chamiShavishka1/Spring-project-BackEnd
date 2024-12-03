@@ -24,12 +24,12 @@ public class VehicleServiceIMPL implements VehicleService {
     @Autowired
     private MappingUtil mappingUtil;
 
-//    @Override
-//    public void saveVehicle(VehicleDTO vehicle) {
-//        vehicle.setVehicleId(generateVehicleID());
-//        vehicleDAO.save(mappingUtil.vehicleConvertToEntity(vehicle));
-//        System.out.println("Vehicle saved successfully: " + vehicle);
-//    }
+    @Override
+    public void saveVehicle(VehicleDTO vehicle) {
+        vehicle.setVehicleId(generateVehicleID());
+        vehicleDAO.save(mappingUtil.vehicleConvertToEntity(vehicle));
+        System.out.println("Vehicle saved successfully: " + vehicle);
+    }
 
 //    @Override
 //    public void updateVehicle(String id, VehicleDTO vehicle) {
@@ -66,10 +66,7 @@ public class VehicleServiceIMPL implements VehicleService {
 //        }
 //    }
 
-    @Override
-    public void saveVehicle(VehicleDTO vehicle) {
 
-    }
 
     @Override
     public void updateVehicle(String id, VehicleDTO vehicle) {
