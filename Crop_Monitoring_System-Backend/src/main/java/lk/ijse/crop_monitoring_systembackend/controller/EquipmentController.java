@@ -47,27 +47,27 @@ public class EquipmentController {
         }
     }
 
-//    @ResponseStatus(HttpStatus.NO_CONTENT)
-//    @PreAuthorize("hasRole('ROLE_MANAGER') or hasRole('ROLE_ADMINISTRATIVE')")
-//    @PatchMapping(value = "/{id}", consumes = MediaType.APPLICATION_JSON_VALUE)
-//    public ResponseEntity<String> updateEquipment(@Valid @PathVariable("id") String id, @RequestBody EquipmentDTO equipment) {
-//        if (id != null && equipment != null) {
-//            try {
-//                equipmentService.updateEquipment(id, equipment);
-//                logger.info("Equipment updated successfully: " + equipment);
-//                return new ResponseEntity<>(HttpStatus.NO_CONTENT);
-//            } catch (NotFoundException e) {
-//                return new ResponseEntity<>(HttpStatus.NOT_FOUND);
-//            } catch (DataPersistFailedException e) {
-//                return new ResponseEntity<>(HttpStatus.BAD_REQUEST);
-//            } catch (Exception e){
-//                logger.severe("Failed to update equipment: " + equipment);
-//                return new ResponseEntity<>(HttpStatus.INTERNAL_SERVER_ERROR);
-//            }
-//        } else {
-//            return new ResponseEntity<>(HttpStatus.BAD_REQUEST);
-//        }
-//    }
+    @ResponseStatus(HttpStatus.NO_CONTENT)
+    @PreAuthorize("hasRole('ROLE_MANAGER') or hasRole('ROLE_ADMINISTRATIVE')")
+    @PatchMapping(value = "/{id}", consumes = MediaType.APPLICATION_JSON_VALUE)
+    public ResponseEntity<String> updateEquipment(@Valid @PathVariable("id") String id, @RequestBody EquipmentDTO equipment) {
+        if (id != null && equipment != null) {
+            try {
+                equipmentService.updateEquipment(id, equipment);
+                logger.info("Equipment updated successfully: " + equipment);
+                return new ResponseEntity<>(HttpStatus.NO_CONTENT);
+            } catch (NotFoundException e) {
+                return new ResponseEntity<>(HttpStatus.NOT_FOUND);
+            } catch (DataPersistFailedException e) {
+                return new ResponseEntity<>(HttpStatus.BAD_REQUEST);
+            } catch (Exception e){
+                logger.severe("Failed to update equipment: " + equipment);
+                return new ResponseEntity<>(HttpStatus.INTERNAL_SERVER_ERROR);
+            }
+        } else {
+            return new ResponseEntity<>(HttpStatus.BAD_REQUEST);
+        }
+    }
 
 //    @PreAuthorize("hasRole('ROLE_MANAGER') or hasRole('ROLE_SCIENTIST') or hasRole('ROLE_ADMINISTRATIVE')")
 //    @GetMapping(value = "/{id}", produces = MediaType.APPLICATION_JSON_VALUE)

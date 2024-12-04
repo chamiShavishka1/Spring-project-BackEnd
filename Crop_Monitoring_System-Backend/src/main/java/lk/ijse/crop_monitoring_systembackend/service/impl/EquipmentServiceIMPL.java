@@ -25,11 +25,6 @@ public class EquipmentServiceIMPL implements EquipmentService {
     private MappingUtil mappingUtil;
 
     @Override
-    public void updateEquipment(String id, EquipmentDTO equipment) {
-
-    }
-
-    @Override
     public EquipmentDTO searchEquipment(String id) {
         return null;
     }
@@ -51,21 +46,21 @@ public class EquipmentServiceIMPL implements EquipmentService {
         System.out.println("Equipment saved successfully: " + equipment);
     }
 
-//    @Override
-//    public void updateEquipment(String id, EquipmentDTO equipment) {
-//        Optional<EquipmentEntity> tmpEquipment = equipmentDAO.findById(id);
-//        if (tmpEquipment.isPresent()) {
-//            EquipmentEntity equipmentEntity = mappingUtil.equipmentConvertToEntity(equipment);
-//            tmpEquipment.get().setCategory(equipmentEntity.getCategory());
-//            tmpEquipment.get().setStatus(equipmentEntity.getStatus());
-//            tmpEquipment.get().setType(equipmentEntity.getType());
-//            tmpEquipment.get().setStaff(equipmentEntity.getStaff());
-//            tmpEquipment.get().setField(equipmentEntity.getField());
-//            System.out.println("Equipment updated successfully: " + tmpEquipment.get());
-//        } else {
-//            throw new NotFoundException("Equipment not found with id: " + id);
-//        }
-//    }
+    @Override
+    public void updateEquipment(String id, EquipmentDTO equipment) {
+        Optional<EquipmentEntity> tmpEquipment = equipmentDAO.findById(id);
+        if (tmpEquipment.isPresent()) {
+            EquipmentEntity equipmentEntity = mappingUtil.equipmentConvertToEntity(equipment);
+            tmpEquipment.get().setCategory(equipmentEntity.getCategory());
+            tmpEquipment.get().setStatus(equipmentEntity.getStatus());
+            tmpEquipment.get().setType(equipmentEntity.getType());
+            tmpEquipment.get().setStaff(equipmentEntity.getStaff());
+            tmpEquipment.get().setField(equipmentEntity.getField());
+            System.out.println("Equipment updated successfully: " + tmpEquipment.get());
+        } else {
+            throw new NotFoundException("Equipment not found with id: " + id);
+        }
+    }
 
 //    @Override
 //    public EquipmentDTO searchEquipment(String id) {
