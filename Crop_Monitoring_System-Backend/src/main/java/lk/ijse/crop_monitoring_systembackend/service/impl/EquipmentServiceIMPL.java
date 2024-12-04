@@ -25,11 +25,6 @@ public class EquipmentServiceIMPL implements EquipmentService {
     private MappingUtil mappingUtil;
 
     @Override
-    public List<EquipmentDTO> getAllEquipments() {
-        return null;
-    }
-
-    @Override
     public void saveEquipment(EquipmentDTO equipment) {
         equipment.setEquipmentId(generateEquipmentID());
         equipmentDAO.save(mappingUtil.equipmentConvertToEntity(equipment));
@@ -74,10 +69,10 @@ public class EquipmentServiceIMPL implements EquipmentService {
         }
     }
 
-//    @Override
-//    public List<EquipmentDTO> getAllEquipments() {
-//        return mappingUtil.equipmentConvertToDTOList(equipmentDAO.findAll());
-//    }
+    @Override
+    public List<EquipmentDTO> getAllEquipments() {
+        return mappingUtil.equipmentConvertToDTOList(equipmentDAO.findAll());
+    }
 
     private String generateEquipmentID() {
         if (equipmentDAO.count() == 0) {

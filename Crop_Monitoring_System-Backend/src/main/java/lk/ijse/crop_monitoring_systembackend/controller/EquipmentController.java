@@ -89,18 +89,18 @@ public class EquipmentController {
         }
     }
 
-//    @PreAuthorize("hasRole('ROLE_MANAGER') or hasRole('ROLE_SCIENTIST') or hasRole('ROLE_ADMINISTRATIVE')")
-//    @GetMapping(produces = MediaType.APPLICATION_JSON_VALUE)
-//    public List<EquipmentDTO> getAllEquipments() {
-//        try {
-//            List<EquipmentDTO> allEquipments = equipmentService.getAllEquipments();
-//            logger.info("All equipments found successfully: " + allEquipments);
-//            return allEquipments;
-//        } catch (Exception e) {
-//            logger.severe("Failed to find all equipments");
-//            return null;
-//        }
-//    }
+    @PreAuthorize("hasRole('ROLE_MANAGER') or hasRole('ROLE_SCIENTIST') or hasRole('ROLE_ADMINISTRATIVE')")
+    @GetMapping(produces = MediaType.APPLICATION_JSON_VALUE)
+    public List<EquipmentDTO> getAllEquipments() {
+        try {
+            List<EquipmentDTO> allEquipments = equipmentService.getAllEquipments();
+            logger.info("All equipments found successfully: " + allEquipments);
+            return allEquipments;
+        } catch (Exception e) {
+            logger.severe("Failed to find all equipments");
+            return null;
+        }
+    }
 
     @PreAuthorize("hasRole('ROLE_MANAGER') or hasRole('ROLE_ADMINISTRATIVE')")
     @DeleteMapping(value = "/{id}")
