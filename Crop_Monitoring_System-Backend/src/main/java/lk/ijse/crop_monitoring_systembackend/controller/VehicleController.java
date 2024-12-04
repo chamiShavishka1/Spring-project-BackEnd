@@ -116,7 +116,7 @@ public class VehicleController {
             } catch (NotFoundException e) {
                 return new ResponseEntity<>(HttpStatus.NOT_FOUND);
             } catch (Exception e) {
-                logger.severe("Failed to delete vehicle: " + id);
+                logger.severe("Failed to delete vehicles: " + id);
                 return new ResponseEntity<>(HttpStatus.INTERNAL_SERVER_ERROR);
             }
         } else {
