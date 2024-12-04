@@ -28,24 +28,24 @@ public class EquipmentController {
 
     private static final Logger logger = Logger.getLogger(EquipmentController.class.getName());
 
-//    @PreAuthorize("hasRole('ROLE_MANAGER') or hasRole('ROLE_ADMINISTRATIVE')")
-//    @PostMapping(consumes = MediaType.APPLICATION_JSON_VALUE)
-//    public ResponseEntity<Void> saveEquipment(@Valid @RequestBody EquipmentDTO equipment) {
-//        if (equipment != null) {
-//            try {
-//                equipmentService.saveEquipment(equipment);
-//                logger.info("Equipment saved successfully: " + equipment);
-//                return new ResponseEntity<>(HttpStatus.CREATED);
-//            }catch (DataPersistFailedException e){
-//                return new ResponseEntity<>(HttpStatus.BAD_REQUEST);
-//            }catch (Exception e){
-//                logger.severe("Failed to save equipment: " + equipment);
-//                return new ResponseEntity<>(HttpStatus.INTERNAL_SERVER_ERROR);
-//            }
-//        } else {
-//            return new ResponseEntity<>(HttpStatus.BAD_REQUEST);
-//        }
-//    }
+    @PreAuthorize("hasRole('ROLE_MANAGER') or hasRole('ROLE_ADMINISTRATIVE')")
+    @PostMapping(consumes = MediaType.APPLICATION_JSON_VALUE)
+    public ResponseEntity<Void> saveEquipment(@Valid @RequestBody EquipmentDTO equipment) {
+        if (equipment != null) {
+            try {
+                equipmentService.saveEquipment(equipment);
+                logger.info("Equipment saved successfully: " + equipment);
+                return new ResponseEntity<>(HttpStatus.CREATED);
+            }catch (DataPersistFailedException e){
+                return new ResponseEntity<>(HttpStatus.BAD_REQUEST);
+            }catch (Exception e){
+                logger.severe("Failed to save equipment: " + equipment);
+                return new ResponseEntity<>(HttpStatus.INTERNAL_SERVER_ERROR);
+            }
+        } else {
+            return new ResponseEntity<>(HttpStatus.BAD_REQUEST);
+        }
+    }
 
 //    @ResponseStatus(HttpStatus.NO_CONTENT)
 //    @PreAuthorize("hasRole('ROLE_MANAGER') or hasRole('ROLE_ADMINISTRATIVE')")

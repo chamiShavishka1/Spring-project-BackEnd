@@ -25,11 +25,6 @@ public class EquipmentServiceIMPL implements EquipmentService {
     private MappingUtil mappingUtil;
 
     @Override
-    public void saveEquipment(EquipmentDTO equipment) {
-
-    }
-
-    @Override
     public void updateEquipment(String id, EquipmentDTO equipment) {
 
     }
@@ -49,12 +44,12 @@ public class EquipmentServiceIMPL implements EquipmentService {
         return null;
     }
 
-//    @Override
-//    public void saveEquipment(EquipmentDTO equipment) {
-//        equipment.setEquipmentId(generateEquipmentID());
-//        equipmentDAO.save(mappingUtil.equipmentConvertToEntity(equipment));
-//        System.out.println("Equipment saved successfully: " + equipment);
-//    }
+    @Override
+    public void saveEquipment(EquipmentDTO equipment) {
+        equipment.setEquipmentId(generateEquipmentID());
+        equipmentDAO.save(mappingUtil.equipmentConvertToEntity(equipment));
+        System.out.println("Equipment saved successfully: " + equipment);
+    }
 
 //    @Override
 //    public void updateEquipment(String id, EquipmentDTO equipment) {
@@ -99,19 +94,19 @@ public class EquipmentServiceIMPL implements EquipmentService {
 //        return mappingUtil.equipmentConvertToDTOList(equipmentDAO.findAll());
 //    }
 
-//    private String generateEquipmentID() {
-//        if (equipmentDAO.count() == 0) {
-//            return "E001";
-//        } else {
-//            String lastId = equipmentDAO.findAll().get(equipmentDAO.findAll().size() - 1).getEquipmentId();
-//            int newId = Integer.parseInt(lastId.substring(1)) + 1;
-//            if (newId < 10) {
-//                return "E00" + newId;
-//            } else if (newId < 100) {
-//                return "E0" + newId;
-//            } else {
-//                return "E" + newId;
-//            }
-//        }
-//    }
+    private String generateEquipmentID() {
+        if (equipmentDAO.count() == 0) {
+            return "E001";
+        } else {
+            String lastId = equipmentDAO.findAll().get(equipmentDAO.findAll().size() - 1).getEquipmentId();
+            int newId = Integer.parseInt(lastId.substring(1)) + 1;
+            if (newId < 10) {
+                return "E00" + newId;
+            } else if (newId < 100) {
+                return "E0" + newId;
+            } else {
+                return "E" + newId;
+            }
+        }
+    }
 }
