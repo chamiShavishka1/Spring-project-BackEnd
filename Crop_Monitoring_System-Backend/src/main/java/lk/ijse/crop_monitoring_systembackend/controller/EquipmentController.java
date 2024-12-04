@@ -102,26 +102,26 @@ public class EquipmentController {
 //        }
 //    }
 
-//    @PreAuthorize("hasRole('ROLE_MANAGER') or hasRole('ROLE_ADMINISTRATIVE')")
-//    @DeleteMapping(value = "/{id}")
-//    public ResponseEntity<String> deleteEquipment(@PathVariable("id") String id) {
-//        if (id != null) {
-//            try {
-//                boolean deleted = equipmentService.deleteEquipment(id);
-//                if (deleted){
-//                    logger.info("Equipment deleted successfully: " + id);
-//                    return new ResponseEntity<>(HttpStatus.NO_CONTENT);
-//                } else {
-//                    return new ResponseEntity<>(HttpStatus.BAD_REQUEST);
-//                }
-//            } catch (NotFoundException e) {
-//                return new ResponseEntity<>(HttpStatus.NOT_FOUND);
-//            } catch (Exception e) {
-//                logger.severe("Failed to delete equipment with id: " + id);
-//                return new ResponseEntity<>(HttpStatus.INTERNAL_SERVER_ERROR);
-//            }
-//        } else {
-//            return new ResponseEntity<>(HttpStatus.BAD_REQUEST);
-//        }
-//    }
+    @PreAuthorize("hasRole('ROLE_MANAGER') or hasRole('ROLE_ADMINISTRATIVE')")
+    @DeleteMapping(value = "/{id}")
+    public ResponseEntity<String> deleteEquipment(@PathVariable("id") String id) {
+        if (id != null) {
+            try {
+                boolean deleted = equipmentService.deleteEquipment(id);
+                if (deleted){
+                    logger.info("Equipment deleted successfully: " + id);
+                    return new ResponseEntity<>(HttpStatus.NO_CONTENT);
+                } else {
+                    return new ResponseEntity<>(HttpStatus.BAD_REQUEST);
+                }
+            } catch (NotFoundException e) {
+                return new ResponseEntity<>(HttpStatus.NOT_FOUND);
+            } catch (Exception e) {
+                logger.severe("Failed to delete equipment with id: " + id);
+                return new ResponseEntity<>(HttpStatus.INTERNAL_SERVER_ERROR);
+            }
+        } else {
+            return new ResponseEntity<>(HttpStatus.BAD_REQUEST);
+        }
+    }
 }
