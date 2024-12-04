@@ -47,14 +47,14 @@ public class VehicleServiceIMPL implements VehicleService {
         }
     }
 
-//    @Override
-//    public VehicleDTO searchVehicle(String id) {
-//        if (vehicleDAO.existsById(id)) {
-//            return mappingUtil.vehicleConvertToDTO(vehicleDAO.getReferenceById(id));
-//        } else {
-//            throw new NotFoundException("Vehicle not found with id: " + id);
-//        }
-//    }
+    @Override
+    public VehicleDTO searchVehicle(String id) {
+        if (vehicleDAO.existsById(id)) {
+            return mappingUtil.vehicleConvertToDTO(vehicleDAO.getReferenceById(id));
+        } else {
+            throw new NotFoundException("Vehicle not found with id: " + id);
+        }
+    }
 
 //    @Override
 //    public boolean deleteVehicle(String id) {
@@ -66,12 +66,6 @@ public class VehicleServiceIMPL implements VehicleService {
 //        }
 //    }
 
-
-
-    @Override
-    public VehicleDTO searchVehicle(String id) {
-        return null;
-    }
 
     @Override
     public boolean deleteVehicle(String id) {

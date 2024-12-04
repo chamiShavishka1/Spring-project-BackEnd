@@ -84,7 +84,7 @@ public class VehicleController {
                 return new ErrorResponse("Failed to find vehicle with id: " + id, HttpStatus.INTERNAL_SERVER_ERROR);
             }
         } else {
-            return new ErrorResponse("Invalid vehicle id", HttpStatus.BAD_REQUEST);
+            return new ErrorResponse("Invalid vehicles id", HttpStatus.BAD_REQUEST);
         }
     }
 
