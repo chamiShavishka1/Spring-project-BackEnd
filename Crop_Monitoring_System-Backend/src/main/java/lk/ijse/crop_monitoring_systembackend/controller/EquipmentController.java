@@ -69,25 +69,25 @@ public class EquipmentController {
         }
     }
 
-//    @PreAuthorize("hasRole('ROLE_MANAGER') or hasRole('ROLE_SCIENTIST') or hasRole('ROLE_ADMINISTRATIVE')")
-//    @GetMapping(value = "/{id}", produces = MediaType.APPLICATION_JSON_VALUE)
-//    public Response searchEquipment(@PathVariable("id") String id) {
-//        if (id != null) {
-//            try {
-//                EquipmentDTO equipmentDTO = equipmentService.searchEquipment(id);
-//                logger.info("Equipment found successfully: " + equipmentDTO);
-//                return equipmentDTO;
-//            } catch (NotFoundException e) {
-//                return new ErrorResponse ("Equipment not found with id: " + id, HttpStatus.NOT_FOUND);
-//            } catch (Exception e) {
-//                e.printStackTrace();
-//                logger.severe("Failed to find equipment with id: " + id);
-//                return new ErrorResponse("Failed to find equipment with id: " + id, HttpStatus.INTERNAL_SERVER_ERROR);
-//            }
-//        } else {
-//            return new ErrorResponse("Invalid equipment id", HttpStatus.BAD_REQUEST);
-//        }
-//    }
+    @PreAuthorize("hasRole('ROLE_MANAGER') or hasRole('ROLE_SCIENTIST') or hasRole('ROLE_ADMINISTRATIVE')")
+    @GetMapping(value = "/{id}", produces = MediaType.APPLICATION_JSON_VALUE)
+    public Response searchEquipment(@PathVariable("id") String id) {
+        if (id != null) {
+            try {
+                EquipmentDTO equipmentDTO = equipmentService.searchEquipment(id);
+                logger.info("Equipment found successfully: " + equipmentDTO);
+                return equipmentDTO;
+            } catch (NotFoundException e) {
+                return new ErrorResponse ("Equipment not found with id: " + id, HttpStatus.NOT_FOUND);
+            } catch (Exception e) {
+                e.printStackTrace();
+                logger.severe("Failed to find equipment with id: " + id);
+                return new ErrorResponse("Failed to find equipment with id: " + id, HttpStatus.INTERNAL_SERVER_ERROR);
+            }
+        } else {
+            return new ErrorResponse("Invalid equipment id", HttpStatus.BAD_REQUEST);
+        }
+    }
 
 //    @PreAuthorize("hasRole('ROLE_MANAGER') or hasRole('ROLE_SCIENTIST') or hasRole('ROLE_ADMINISTRATIVE')")
 //    @GetMapping(produces = MediaType.APPLICATION_JSON_VALUE)

@@ -25,11 +25,6 @@ public class EquipmentServiceIMPL implements EquipmentService {
     private MappingUtil mappingUtil;
 
     @Override
-    public EquipmentDTO searchEquipment(String id) {
-        return null;
-    }
-
-    @Override
     public boolean deleteEquipment(String id) {
         return false;
     }
@@ -62,16 +57,16 @@ public class EquipmentServiceIMPL implements EquipmentService {
         }
     }
 
-//    @Override
-//    public EquipmentDTO searchEquipment(String id) {
-//        if (equipmentDAO.existsById(id)) {
-//            EquipmentDTO equipmentDTO = mappingUtil.equipmentConvertToDTO(equipmentDAO.getReferenceById(id));
-//            System.out.println("Equipment searched successfully: " + equipmentDTO);
-//            return equipmentDTO;
-//        } else {
-//            throw new NotFoundException("Equipment not found with id: " + id);
-//        }
-//    }
+    @Override
+    public EquipmentDTO searchEquipment(String id) {
+        if (equipmentDAO.existsById(id)) {
+            EquipmentDTO equipmentDTO = mappingUtil.equipmentConvertToDTO(equipmentDAO.getReferenceById(id));
+            System.out.println("Equipment searched successfully: " + equipmentDTO);
+            return equipmentDTO;
+        } else {
+            throw new NotFoundException("Equipment not found with id: " + id);
+        }
+    }
 
 //    @Override
 //    public boolean deleteEquipment(String id) {
