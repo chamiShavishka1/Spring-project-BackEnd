@@ -31,21 +31,21 @@ public class VehicleServiceIMPL implements VehicleService {
         System.out.println("Vehicle saved successfully: " + vehicle);
     }
 
-//    @Override
-//    public void updateVehicle(String id, VehicleDTO vehicle) {
-//        Optional<VehicleEntity> tmpVehicle = vehicleDAO.findById(id);
-//        if (tmpVehicle.isPresent()) {
-//            VehicleEntity vehicleEntity = mappingUtil.vehicleConvertToEntity(vehicle);
-//            tmpVehicle.get().setCategory(vehicleEntity.getCategory());
-//            tmpVehicle.get().setNumberPlate(vehicleEntity.getNumberPlate());
-//            tmpVehicle.get().setFuelType(vehicleEntity.getFuelType());
-//            tmpVehicle.get().setStatus(vehicleEntity.getStatus());
-//            tmpVehicle.get().setRemarks(vehicleEntity.getRemarks());
-//            System.out.println("Vehicle updated successfully: " + tmpVehicle.get());
-//        } else {
-//            throw new NotFoundException("Vehicle not found with id: " + id);
-//        }
-//    }
+    @Override
+    public void updateVehicle(String id, VehicleDTO vehicle) {
+        Optional<VehicleEntity> tmpVehicle = vehicleDAO.findById(id);
+        if (tmpVehicle.isPresent()) {
+            VehicleEntity vehicleEntity = mappingUtil.vehicleConvertToEntity(vehicle);
+            tmpVehicle.get().setCategory(vehicleEntity.getCategory());
+            tmpVehicle.get().setNumberPlate(vehicleEntity.getNumberPlate());
+            tmpVehicle.get().setFuelType(vehicleEntity.getFuelType());
+            tmpVehicle.get().setStatus(vehicleEntity.getStatus());
+            tmpVehicle.get().setRemarks(vehicleEntity.getRemarks());
+            System.out.println("Vehicle updated successfully: " + tmpVehicle.get());
+        } else {
+            throw new NotFoundException("Vehicle not found with id: " + id);
+        }
+    }
 
 //    @Override
 //    public VehicleDTO searchVehicle(String id) {
@@ -67,11 +67,6 @@ public class VehicleServiceIMPL implements VehicleService {
 //    }
 
 
-
-    @Override
-    public void updateVehicle(String id, VehicleDTO vehicle) {
-
-    }
 
     @Override
     public VehicleDTO searchVehicle(String id) {
