@@ -34,30 +34,30 @@ public class StaffServiceIMPL implements StaffService {
         System.out.println("Staff saved successfully: " + staffEntity);
     }
 
-//    @Override
-//    public void updateStaff(String id, StaffDTO staff) {
-//        Optional<StaffEntity> tmpStaffEntity = staffDAO.findById(id);
-//        if (tmpStaffEntity.isPresent()) {
-//            StaffEntity staffEntity = mappingUtil.staffConvertToEntity(staff);
-//            tmpStaffEntity.get().setFirstName(staffEntity.getFirstName());
-//            tmpStaffEntity.get().setLastName(staffEntity.getLastName());
-//            tmpStaffEntity.get().setDesignation(staffEntity.getDesignation());
-//            tmpStaffEntity.get().setGender(staffEntity.getGender());
-//            tmpStaffEntity.get().setDateOfBirth(staffEntity.getDateOfBirth());
-//            tmpStaffEntity.get().setAddressLine1(staffEntity.getAddressLine1());
-//            tmpStaffEntity.get().setAddressLine2(staffEntity.getAddressLine2());
-//            tmpStaffEntity.get().setAddressLine3(staffEntity.getAddressLine3());
-//            tmpStaffEntity.get().setAddressLine4(staffEntity.getAddressLine4());
-//            tmpStaffEntity.get().setAddressLine5(staffEntity.getAddressLine5());
-//            tmpStaffEntity.get().setMobile(staffEntity.getMobile());
-//            tmpStaffEntity.get().setEmail(staffEntity.getEmail());
-//            tmpStaffEntity.get().setRole(staffEntity.getRole());
-//            tmpStaffEntity.get().setVehicleId(staffEntity.getVehicleId());
-//            System.out.println("Staff updated successfully: " + tmpStaffEntity.get());
-//        } else {
-//            throw new NotFoundException("Staff not found with id: " + id);
-//        }
-//    }
+    @Override
+    public void updateStaff(String id, StaffDTO staff) {
+        Optional<StaffEntity> tmpStaffEntity = staffDAO.findById(id);
+        if (tmpStaffEntity.isPresent()) {
+            StaffEntity staffEntity = mappingUtil.staffConvertToEntity(staff);
+            tmpStaffEntity.get().setFirstName(staffEntity.getFirstName());
+            tmpStaffEntity.get().setLastName(staffEntity.getLastName());
+            tmpStaffEntity.get().setDesignation(staffEntity.getDesignation());
+            tmpStaffEntity.get().setGender(staffEntity.getGender());
+            tmpStaffEntity.get().setDateOfBirth(staffEntity.getDateOfBirth());
+            tmpStaffEntity.get().setAddressLine1(staffEntity.getAddressLine1());
+            tmpStaffEntity.get().setAddressLine2(staffEntity.getAddressLine2());
+            tmpStaffEntity.get().setAddressLine3(staffEntity.getAddressLine3());
+            tmpStaffEntity.get().setAddressLine4(staffEntity.getAddressLine4());
+            tmpStaffEntity.get().setAddressLine5(staffEntity.getAddressLine5());
+            tmpStaffEntity.get().setMobile(staffEntity.getMobile());
+            tmpStaffEntity.get().setEmail(staffEntity.getEmail());
+            tmpStaffEntity.get().setRole(staffEntity.getRole());
+            tmpStaffEntity.get().setVehicleId(staffEntity.getVehicleId());
+            System.out.println("Staff updated successfully: " + tmpStaffEntity.get());
+        } else {
+            throw new NotFoundException("Staff not found with id: " + id);
+        }
+    }
 
 //    @Override
 //    public StaffDTO searchStaff(String id) {
@@ -98,10 +98,6 @@ public class StaffServiceIMPL implements StaffService {
                 return "S" + newId;
             }
         }
-    }
-    @Override
-    public void updateStaff(String id, StaffDTO staff) {
-
     }
 
     @Override

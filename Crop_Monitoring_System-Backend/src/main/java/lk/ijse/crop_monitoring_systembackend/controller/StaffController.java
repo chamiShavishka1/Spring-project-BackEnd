@@ -47,27 +47,27 @@ public class StaffController {
         }
     }
 
-//    @ResponseStatus(HttpStatus.NO_CONTENT)
-//    @PreAuthorize("hasRole('ROLE_MANAGER') or hasRole('ROLE_ADMINISTRATIVE')")
-//    @PatchMapping(value = "/{id}", consumes = MediaType.APPLICATION_JSON_VALUE)
-//    public ResponseEntity<String> updateStaff(@Valid @PathVariable("id") String id, @RequestBody StaffDTO staff) {
-//        if (id != null && staff != null) {
-//            try {
-//                staffService.updateStaff(id, staff);
-//                logger.info("Staff updated successfully: " + staff);
-//                return new ResponseEntity<>(HttpStatus.NO_CONTENT);
-//            }catch (NotFoundException e){
-//                return new ResponseEntity<>(HttpStatus.NOT_FOUND);
-//            }catch (DataPersistFailedException e){
-//                return new ResponseEntity<>(HttpStatus.BAD_REQUEST);
-//            }catch (Exception e){
-//                logger.severe("Failed to update staff: " + staff);
-//                return new ResponseEntity<>(HttpStatus.INTERNAL_SERVER_ERROR);
-//            }
-//        } else {
-//            return new ResponseEntity<>(HttpStatus.BAD_REQUEST);
-//        }
-//    }
+    @ResponseStatus(HttpStatus.NO_CONTENT)
+    @PreAuthorize("hasRole('ROLE_MANAGER') or hasRole('ROLE_ADMINISTRATIVE')")
+    @PatchMapping(value = "/{id}", consumes = MediaType.APPLICATION_JSON_VALUE)
+    public ResponseEntity<String> updateStaff(@Valid @PathVariable("id") String id, @RequestBody StaffDTO staff) {
+        if (id != null && staff != null) {
+            try {
+                staffService.updateStaff(id, staff);
+                logger.info("Staff updated successfully: " + staff);
+                return new ResponseEntity<>(HttpStatus.NO_CONTENT);
+            }catch (NotFoundException e){
+                return new ResponseEntity<>(HttpStatus.NOT_FOUND);
+            }catch (DataPersistFailedException e){
+                return new ResponseEntity<>(HttpStatus.BAD_REQUEST);
+            }catch (Exception e){
+                logger.severe("Failed to update staff: " + staff);
+                return new ResponseEntity<>(HttpStatus.INTERNAL_SERVER_ERROR);
+            }
+        } else {
+            return new ResponseEntity<>(HttpStatus.BAD_REQUEST);
+        }
+    }
 
 //    @PreAuthorize("hasRole('ROLE_MANAGER') or hasRole('ROLE_SCIENTIST') or hasRole('ROLE_ADMINISTRATIVE')")
 //    @GetMapping(value = "/{id}", produces = MediaType.APPLICATION_JSON_VALUE)
