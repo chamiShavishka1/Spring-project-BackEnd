@@ -87,44 +87,44 @@ public class LogServiceIMPL implements LogService {
         return staffLogEntity;
     }
 
-//    @Override
-//    public void updateLog(String id, LogDTO log) {
-//        Optional<LogEntity> tmpLogEntity = logDAO.findById(id);
-//        if (tmpLogEntity.isPresent()) {
-//            LogEntity logEntity = mappingUtil.logConvertToEntity(log);
-//            tmpLogEntity.get().setDetails(logEntity.getDetails());
-//            tmpLogEntity.get().setTemperature(logEntity.getTemperature());
-//            tmpLogEntity.get().setObservedImg(logEntity.getObservedImg());
-//            tmpLogEntity.get().setField(logEntity.getField());
-//            tmpLogEntity.get().setCrop(logEntity.getCrop());
-//
-//            logDAO.save(tmpLogEntity.get()); // Save the updated log details
-//
-//            staffLogDAO.deleteByLogEntity_LogId(id); // Delete old staff logs for this log
-//
-//            List<FieldStaffEntity> fieldStaffEntities = fieldStaffDAO.findByField_FieldId(log.getFieldId());
-//            List<String> staffIds = fieldStaffEntities.stream()
-//                    .map(FieldStaffEntity::getStaff)
-//                    .map(StaffEntity::getStaffId)
-//                    .collect(Collectors.toList());
-//            for (String staffId : staffIds) {
-//                StaffLogDTO staffLogDTO = new StaffLogDTO();
-//                staffLogDTO.setLogId(id);
-//                staffLogDTO.setStaffId(staffId);
-//
-//                // Manually assign an ID if necessary
-//                StaffLogEntity staffLogEntity = staffLogConvertToEntity(staffLogDTO);
-//                staffLogEntity.setStaffLogId(generateStaffLogID());
-//
-//                staffLogDAO.save(staffLogEntity);
-//            }
-//
-//            System.out.println("Log updated successfully: " + log);
-//        } else {
-//            System.out.println("Log not found with id: " + id);
-//            throw new NotFoundException("Log not found with id: " + id);
-//        }
-//    }
+    @Override
+    public void updateLog(String id, LogDTO log) {
+        Optional<LogEntity> tmpLogEntity = logDAO.findById(id);
+        if (tmpLogEntity.isPresent()) {
+            LogEntity logEntity = mappingUtil.logConvertToEntity(log);
+            tmpLogEntity.get().setDetails(logEntity.getDetails());
+            tmpLogEntity.get().setTemperature(logEntity.getTemperature());
+            tmpLogEntity.get().setObservedImg(logEntity.getObservedImg());
+            tmpLogEntity.get().setField(logEntity.getField());
+            tmpLogEntity.get().setCrop(logEntity.getCrop());
+
+            logDAO.save(tmpLogEntity.get()); // Save the updated log details
+
+            staffLogDAO.deleteByLogEntity_LogId(id); // Delete old staff logs for this log
+
+            List<FieldStaffEntity> fieldStaffEntities = fieldStaffDAO.findByField_FieldId(log.getFieldId());
+            List<String> staffIds = fieldStaffEntities.stream()
+                    .map(FieldStaffEntity::getStaff)
+                    .map(StaffEntity::getStaffId)
+                    .collect(Collectors.toList());
+            for (String staffId : staffIds) {
+                StaffLogDTO staffLogDTO = new StaffLogDTO();
+                staffLogDTO.setLogId(id);
+                staffLogDTO.setStaffId(staffId);
+
+                // Manually assign an ID if necessary
+                StaffLogEntity staffLogEntity = staffLogConvertToEntity(staffLogDTO);
+                staffLogEntity.setStaffLogId(generateStaffLogID());
+
+                staffLogDAO.save(staffLogEntity);
+            }
+
+            System.out.println("Log updated successfully: " + log);
+        } else {
+            System.out.println("Log not found with id: " + id);
+            throw new NotFoundException("Log not found with id: " + id);
+        }
+    }
 
 
 //    @Override
@@ -194,12 +194,6 @@ public class LogServiceIMPL implements LogService {
             }
         }
     }
-
-    @Override
-    public void updateLog(String id, LogDTO log) {
-
-    }
-
     @Override
     public LogDTO searchLog(String id) {
         return null;
