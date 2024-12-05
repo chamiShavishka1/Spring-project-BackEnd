@@ -153,15 +153,15 @@ public class LogServiceIMPL implements LogService {
         }
     }
 
-//    @Override
-//    public List<LogDTO> getAllLogs() {
-//        return logDAO.findAll().stream().map(logEntity -> {
-//            List<StaffLogEntity> byLogEntityLogId = staffLogDAO.findByLogEntity_LogId(logEntity.getLogId());
-//            LogDTO logDTO = mappingUtil.logConvertToDTO(logEntity);
-//            logDTO.setStaff(byLogEntityLogId.stream().map(StaffLogEntity::getStaffEntity).map(StaffEntity::getStaffId).collect(Collectors.toList()));
-//            return logDTO;
-//        }).collect(Collectors.toList());
-//    }
+    @Override
+    public List<LogDTO> getAllLogs() {
+        return logDAO.findAll().stream().map(logEntity -> {
+            List<StaffLogEntity> byLogEntityLogId = staffLogDAO.findByLogEntity_LogId(logEntity.getLogId());
+            LogDTO logDTO = mappingUtil.logConvertToDTO(logEntity);
+            logDTO.setStaff(byLogEntityLogId.stream().map(StaffLogEntity::getStaffEntity).map(StaffEntity::getStaffId).collect(Collectors.toList()));
+            return logDTO;
+        }).collect(Collectors.toList());
+    }
 
     private String generateLogID() {
         if (logDAO.count() == 0) {
@@ -195,8 +195,4 @@ public class LogServiceIMPL implements LogService {
         }
     }
 
-    @Override
-    public List<LogDTO> getAllLogs() {
-        return null;
-    }
 }
