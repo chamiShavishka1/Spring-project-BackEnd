@@ -41,51 +41,51 @@ public class LogServiceIMPL implements LogService {
     @Autowired
     private MappingUtil mappingUtil;
 
-//    @Override
-//    public void saveLog(LogDTO log) {
-//        String logId = generateLogID();
-//        log.setLogId(logId);
-//        log.setDate(LocalDate.now());
-//        LogEntity logEntity = mappingUtil.logConvertToEntity(log);
-//        logDAO.save(logEntity);
-//
-//        List<FieldStaffEntity> byFieldFieldId = fieldStaffDAO.findByField_FieldId(log.getFieldId());
-//        FieldDTO fieldDTO = mappingUtil.fieldConvertToDTO(fieldDAO.getReferenceById(log.getFieldId()));
-//        fieldDTO.setStaffs(byFieldFieldId.stream()
-//                .map(FieldStaffEntity::getStaff)
-//                .map(StaffEntity::getStaffId)
-//                .collect(Collectors.toList()));
-//
-//        for (String staffId : fieldDTO.getStaffs()) {
-//            StaffLogDTO staffLogDTO = new StaffLogDTO();
-//            staffLogDTO.setStaffLogId(generateStaffLogID());
-//            staffLogDTO.setLogId(logId);
-//            staffLogDTO.setStaffId(staffId);
-//            StaffLogEntity staffLogEntity = staffLogConvertToEntity(staffLogDTO);
-//            staffLogDAO.save(staffLogEntity);
-//
-//            System.out.println("Staff Log saved for staff: " + staffId);
-//        }
-//
-//        System.out.println("Log saved successfully: " + log);
-//    }
+    @Override
+    public void saveLog(LogDTO log) {
+        String logId = generateLogID();
+        log.setLogId(logId);
+        log.setDate(LocalDate.now());
+        LogEntity logEntity = mappingUtil.logConvertToEntity(log);
+        logDAO.save(logEntity);
 
-//    public StaffLogEntity staffLogConvertToEntity(StaffLogDTO staffLogDTO) {
-//        StaffLogEntity staffLogEntity = new StaffLogEntity();
-//        staffLogEntity.setStaffLogId(staffLogDTO.getStaffLogId());
-//
-//        if (staffLogDTO.getStaffId() != null) {
-//            StaffEntity staffEntity = staffDAO.getReferenceById(staffLogDTO.getStaffId());
-//            staffLogEntity.setStaffEntity(staffEntity);
-//        }
-//
-//        if (staffLogDTO.getLogId() != null) {
-//            LogEntity logEntity = logDAO.getReferenceById(staffLogDTO.getLogId());
-//            staffLogEntity.setLogEntity(logEntity);
-//        }
-//
-//        return staffLogEntity;
-//    }
+        List<FieldStaffEntity> byFieldFieldId = fieldStaffDAO.findByField_FieldId(log.getFieldId());
+        FieldDTO fieldDTO = mappingUtil.fieldConvertToDTO(fieldDAO.getReferenceById(log.getFieldId()));
+        fieldDTO.setStaffs(byFieldFieldId.stream()
+                .map(FieldStaffEntity::getStaff)
+                .map(StaffEntity::getStaffId)
+                .collect(Collectors.toList()));
+
+        for (String staffId : fieldDTO.getStaffs()) {
+            StaffLogDTO staffLogDTO = new StaffLogDTO();
+            staffLogDTO.setStaffLogId(generateStaffLogID());
+            staffLogDTO.setLogId(logId);
+            staffLogDTO.setStaffId(staffId);
+            StaffLogEntity staffLogEntity = staffLogConvertToEntity(staffLogDTO);
+            staffLogDAO.save(staffLogEntity);
+
+            System.out.println("Staff Log saved for staff: " + staffId);
+        }
+
+        System.out.println("Log saved successfully: " + log);
+    }
+
+    public StaffLogEntity staffLogConvertToEntity(StaffLogDTO staffLogDTO) {
+        StaffLogEntity staffLogEntity = new StaffLogEntity();
+        staffLogEntity.setStaffLogId(staffLogDTO.getStaffLogId());
+
+        if (staffLogDTO.getStaffId() != null) {
+            StaffEntity staffEntity = staffDAO.getReferenceById(staffLogDTO.getStaffId());
+            staffLogEntity.setStaffEntity(staffEntity);
+        }
+
+        if (staffLogDTO.getLogId() != null) {
+            LogEntity logEntity = logDAO.getReferenceById(staffLogDTO.getLogId());
+            staffLogEntity.setLogEntity(logEntity);
+        }
+
+        return staffLogEntity;
+    }
 
 //    @Override
 //    public void updateLog(String id, LogDTO log) {
@@ -193,11 +193,6 @@ public class LogServiceIMPL implements LogService {
                 return "SL" + newId;
             }
         }
-    }
-
-    @Override
-    public void saveLog(LogDTO log) {
-
     }
 
     @Override
