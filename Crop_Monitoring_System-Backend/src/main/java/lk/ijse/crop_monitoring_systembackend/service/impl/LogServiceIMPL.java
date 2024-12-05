@@ -127,18 +127,18 @@ public class LogServiceIMPL implements LogService {
     }
 
 
-//    @Override
-//    public LogDTO searchLog(String id) {
-//        if (logDAO.existsById(id)) {
-//            List<StaffLogEntity> byLogEntityLogId = staffLogDAO.findByLogEntity_LogId(id);
-//            LogDTO logDTO = mappingUtil.logConvertToDTO(logDAO.getReferenceById(id));
-//            logDTO.setStaff(byLogEntityLogId.stream().map(StaffLogEntity::getStaffEntity).map(StaffEntity::getStaffId).collect(Collectors.toList()));
-//            return logDTO;
-//        } else {
-//            System.out.println("Log not found with id: " + id);
-//            throw new NotFoundException("Log not found with id: " + id);
-//        }
-//    }
+    @Override
+    public LogDTO searchLog(String id) {
+        if (logDAO.existsById(id)) {
+            List<StaffLogEntity> byLogEntityLogId = staffLogDAO.findByLogEntity_LogId(id);
+            LogDTO logDTO = mappingUtil.logConvertToDTO(logDAO.getReferenceById(id));
+            logDTO.setStaff(byLogEntityLogId.stream().map(StaffLogEntity::getStaffEntity).map(StaffEntity::getStaffId).collect(Collectors.toList()));
+            return logDTO;
+        } else {
+            System.out.println("Log not found with id: " + id);
+            throw new NotFoundException("Log not found with id: " + id);
+        }
+    }
 
 //    @Override
 //    public boolean deleteLog(String id) {
@@ -194,11 +194,6 @@ public class LogServiceIMPL implements LogService {
             }
         }
     }
-    @Override
-    public LogDTO searchLog(String id) {
-        return null;
-    }
-
     @Override
     public boolean deleteLog(String id) {
         return false;
