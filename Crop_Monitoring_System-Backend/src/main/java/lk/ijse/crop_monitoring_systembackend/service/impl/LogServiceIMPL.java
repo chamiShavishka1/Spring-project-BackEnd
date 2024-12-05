@@ -140,18 +140,18 @@ public class LogServiceIMPL implements LogService {
         }
     }
 
-//    @Override
-//    public boolean deleteLog(String id) {
-//        if (logDAO.existsById(id)) {
-//            logDAO.deleteById(id);
-//            staffLogDAO.deleteByLogEntity_LogId(id);
-//            System.out.println("Log deleted successfully with id: " + id);
-//            return true;
-//        } else {
-//            System.out.println("Log not found with id: " + id);
-//            throw new NotFoundException("Log not found with id: " + id);
-//        }
-//    }
+    @Override
+    public boolean deleteLog(String id) {
+        if (logDAO.existsById(id)) {
+            logDAO.deleteById(id);
+            staffLogDAO.deleteByLogEntity_LogId(id);
+            System.out.println("Log deleted successfully with id: " + id);
+            return true;
+        } else {
+            System.out.println("Log not found with id: " + id);
+            throw new NotFoundException("Log not found with id: " + id);
+        }
+    }
 
 //    @Override
 //    public List<LogDTO> getAllLogs() {
@@ -193,10 +193,6 @@ public class LogServiceIMPL implements LogService {
                 return "SL" + newId;
             }
         }
-    }
-    @Override
-    public boolean deleteLog(String id) {
-        return false;
     }
 
     @Override
