@@ -25,14 +25,14 @@ public class StaffServiceIMPL implements StaffService {
     @Autowired
     private MappingUtil mappingUtil;
 
-//    @Override
-//    public void saveStaff(StaffDTO staff) {
-//        staff.setStaffId(generateStaffID());
-//        staff.setJoinedDate(LocalDate.now());
-//        StaffEntity staffEntity = mappingUtil.staffConvertToEntity(staff);
-//        staffDAO.save(staffEntity);
-//        System.out.println("Staff saved successfully: " + staffEntity);
-//    }
+    @Override
+    public void saveStaff(StaffDTO staff) {
+        staff.setStaffId(generateStaffID());
+        staff.setJoinedDate(LocalDate.now());
+        StaffEntity staffEntity = mappingUtil.staffConvertToEntity(staff);
+        staffDAO.save(staffEntity);
+        System.out.println("Staff saved successfully: " + staffEntity);
+    }
 
 //    @Override
 //    public void updateStaff(String id, StaffDTO staff) {
@@ -99,12 +99,6 @@ public class StaffServiceIMPL implements StaffService {
             }
         }
     }
-
-    @Override
-    public void saveStaff(StaffDTO staff) {
-
-    }
-
     @Override
     public void updateStaff(String id, StaffDTO staff) {
 

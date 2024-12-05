@@ -23,29 +23,29 @@ import java.util.logging.Logger;
 @RequiredArgsConstructor
 @CrossOrigin(origins = "*", allowedHeaders = "*")
 public class StaffController {
-//    @Autowired
-//    private StaffService staffService;
-//
-//    private static final Logger logger = Logger.getLogger(StaffController.class.getName());
-//
-//    @PreAuthorize("hasRole('ROLE_MANAGER') or hasRole('ROLE_ADMINISTRATIVE')")
-//    @PostMapping(consumes = MediaType.APPLICATION_JSON_VALUE)
-//    public ResponseEntity<Void> saveStaff(@Valid @RequestBody StaffDTO staff) {
-//        if (staff != null) {
-//            try {
-//                staffService.saveStaff(staff);
-//                logger.info("Staff saved successfully: " + staff);
-//                return new ResponseEntity<>(HttpStatus.CREATED);
-//            }catch (DataPersistFailedException e){
-//                return new ResponseEntity<>(HttpStatus.BAD_REQUEST);
-//            }catch (Exception e){
-//                logger.severe("Failed to save staff: " + staff);
-//                return new ResponseEntity<>(HttpStatus.INTERNAL_SERVER_ERROR);
-//            }
-//        } else {
-//            return new ResponseEntity<>(HttpStatus.BAD_REQUEST);
-//        }
-//    }
+    @Autowired
+    private StaffService staffService;
+
+    private static final Logger logger = Logger.getLogger(StaffController.class.getName());
+
+    @PreAuthorize("hasRole('ROLE_MANAGER') or hasRole('ROLE_ADMINISTRATIVE')")
+    @PostMapping(consumes = MediaType.APPLICATION_JSON_VALUE)
+    public ResponseEntity<Void> saveStaff(@Valid @RequestBody StaffDTO staff) {
+        if (staff != null) {
+            try {
+                staffService.saveStaff(staff);
+                logger.info("Staff saved successfully: " + staff);
+                return new ResponseEntity<>(HttpStatus.CREATED);
+            }catch (DataPersistFailedException e){
+                return new ResponseEntity<>(HttpStatus.BAD_REQUEST);
+            }catch (Exception e){
+                logger.severe("Failed to save staff: " + staff);
+                return new ResponseEntity<>(HttpStatus.INTERNAL_SERVER_ERROR);
+            }
+        } else {
+            return new ResponseEntity<>(HttpStatus.BAD_REQUEST);
+        }
+    }
 
 //    @ResponseStatus(HttpStatus.NO_CONTENT)
 //    @PreAuthorize("hasRole('ROLE_MANAGER') or hasRole('ROLE_ADMINISTRATIVE')")
