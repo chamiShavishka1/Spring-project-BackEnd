@@ -59,30 +59,30 @@ public class StaffServiceIMPL implements StaffService {
         }
     }
 
-//    @Override
-//    public StaffDTO searchStaff(String id) {
-//        if (staffDAO.existsById(id)) {
-//            return mappingUtil.staffConvertToDTO(staffDAO.getReferenceById(id));
-//        } else {
-//            throw new NotFoundException("Staff not found with id: " + id);
-//        }
-//    }
+    @Override
+    public StaffDTO searchStaff(String id) {
+        if (staffDAO.existsById(id)) {
+            return mappingUtil.staffConvertToDTO(staffDAO.getReferenceById(id));
+        } else {
+            throw new NotFoundException("Staff not found with id: " + id);
+        }
+    }
 
-//    @Override
-//    public List<StaffDTO> getAllStaffs() {
-//        return mappingUtil.staffConvertToDTOList(staffDAO.findAll());
-//    }
-//
-//    @Override
-//    public boolean deleteStaff(String id) {
-//        if (staffDAO.existsById(id)) {
-//            staffDAO.deleteById(id);
-//            System.out.println("Staff deleted successfully: " + id);
-//            return true;
-//        } else {
-//            throw new NotFoundException("Staff not found with id: " + id);
-//        }
-//    }
+    @Override
+    public List<StaffDTO> getAllStaffs() {
+        return mappingUtil.staffConvertToDTOList(staffDAO.findAll());
+    }
+
+    @Override
+    public boolean deleteStaff(String id) {
+        if (staffDAO.existsById(id)) {
+            staffDAO.deleteById(id);
+            System.out.println("Staff deleted successfully: " + id);
+            return true;
+        } else {
+            throw new NotFoundException("Staff not found with id: " + id);
+        }
+    }
 
     private String generateStaffID() {
         if (staffDAO.count() == 0) {
@@ -100,18 +100,4 @@ public class StaffServiceIMPL implements StaffService {
         }
     }
 
-    @Override
-    public boolean deleteStaff(String id) {
-        return false;
-    }
-
-    @Override
-    public StaffDTO searchStaff(String id) {
-        return null;
-    }
-
-    @Override
-    public List<StaffDTO> getAllStaffs() {
-        return null;
-    }
 }
